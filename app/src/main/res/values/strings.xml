@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">TwitterClone</string>
+    <string name="app_id">rMLRspS7VxLlZRfdpJ2ydQCHHSeSGPG7iV7a1X5w</string>
+    <string name="client_key">JWE79mdbsD8g23YRXbe5Gc8noL7YeL44dNmER7u6</string>
+    <string name="parse_api_address">https://parseapi.back4app.com/</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

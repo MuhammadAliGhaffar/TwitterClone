@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:onClick="rootLayoutTappedSignIn"
     tools:context=".SignInActivity">
 
     <ImageView
@@ -12,9 +13,9 @@
         android:layout_height="30dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
-        app:srcCompat="@drawable/back1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back1" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -33,6 +34,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="32dp"
         android:fontFamily="@font/cabin"
+        android:onClick="goToSignUpActivity"
         android:text="Sign up"
         android:textColor="@color/colorPrimary"
         android:textSize="20sp"
@@ -58,8 +60,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="15dp"
-        android:text="Phone, email or username"
         android:fontFamily="@font/cabin"
+        android:text="Phone, email or username"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
@@ -87,17 +89,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edt_sign_in_email" />
 
-    <EditText
-        android:id="@+id/edt_sign_in_password"
-        android:layout_width="0dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordvisibilitytoggle"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:ems="10"
-        android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:passwordToggleEnabled="true">
+
+
+        <EditText
+            android:id="@+id/edt_sign_in_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
 
     <TextView
         android:id="@+id/ForgetPassword"
@@ -108,7 +122,7 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_sign_in_password" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordvisibilitytoggle" />
 
     <Button
         android:id="@+id/btnLogIn"
@@ -117,6 +131,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/round_button"
+        android:onClick="btnUserLogIn"
         android:text="Log in"
         android:textColor="#fff"
         android:textStyle="bold"
