@@ -27,6 +27,13 @@ public class SignInActivity extends AppCompatActivity {
         edt_sign_in_email=findViewById(R.id.edt_sign_in_email);
         edt_sign_in_password=findViewById(R.id.edt_sign_in_password);
 
+        if(ParseUser.getCurrentUser() != null){
+            //   ParseUser.getCurrentUser().logOut();
+            Intent intent =new Intent(SignInActivity.this,HomeActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        }
+
     }
     public void goToSignUpActivity(View view){
         Intent intent=new Intent(SignInActivity.this,SignUpActivity.class);

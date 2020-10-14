@@ -1,5 +1,6 @@
 package com.example.twitterclone;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -12,6 +13,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.parse.ParseUser;
 import com.shashank.sony.fancytoastlib.FancyToast;
 
 public class HomeActivity extends AppCompatActivity {
@@ -25,6 +27,23 @@ public class HomeActivity extends AppCompatActivity {
         MenuInflater inflater=getMenuInflater();
         inflater.inflate(R.menu.option_menu,menu);
         return true;
+    }
+
+    //Logout current User
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.logout:
+                FancyToast.makeText(HomeActivity.this,"Logout is Pressed",FancyToast.LENGTH_SHORT,FancyToast.INFO,false).show();
+                ParseUser.getCurrentUser().logOut();
+                Intent intent =new Intent(HomeActivity.this,SignInActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
     }
 
     @Override
