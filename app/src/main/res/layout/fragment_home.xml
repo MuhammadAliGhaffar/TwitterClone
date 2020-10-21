@@ -9,7 +9,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:id="@+id/llv">
 
         <EditText
             android:id="@+id/edtUserStatus"
@@ -17,20 +18,28 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="10dp"
             android:inputType="textPersonName"
             android:hint="What's happening..." />
 
         <Button
             android:id="@+id/btnPostTweet"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Post" />
+            android:layout_height="38dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/round1_button"
+            android:text="Post"
+            android:textColor="#fff"/>
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="43dp"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/image_upload" />
     </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/llv"
+        android:id="@+id/recyclerView">
+
+    </androidx.recyclerview.widget.RecyclerView>
 </RelativeLayout>
