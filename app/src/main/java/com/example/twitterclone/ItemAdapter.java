@@ -3,6 +3,7 @@ package com.example.twitterclone;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -30,7 +31,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ItemAdapter.ViewHolder holder, int position) {
 
-        //holder.userProfile.setImageResource(itemList.get(position).getUserProfile());
+        holder.userProfile.setImageResource(itemList.get(position).getUserProfile());
         holder.username.setText(itemList.get(position).getUsername());
         holder.userStatus.setText(itemList.get(position).getUserStatus());
 
@@ -42,13 +43,13 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        //ImageView userProfile;
+        ImageView userProfile;
         TextView username,userStatus;
 
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            //userProfile=itemView.findViewById(R.id.itemPicture);
+            userProfile=itemView.findViewById(R.id.itemPicture);
             username=itemView.findViewById(R.id.itemUsername);
             userStatus=itemView.findViewById(R.id.itemTweet);
 

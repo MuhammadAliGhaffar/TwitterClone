@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -39,11 +40,13 @@ public class FragmentHome extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         edtUserStatus=view.findViewById(R.id.edtUserStatus);
         btnPostTweet=view.findViewById(R.id.btnPostTweet);
+
         recyclerView=view.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        initData();
 
-        //initData();
+
 
         btnPostTweet.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,15 +68,15 @@ public class FragmentHome extends Fragment {
             }
         });
 
-        recyclerView.setAdapter(new ItemAdapter(initData()));
+
 
         return view;
     }
 
-    private List<ModelRI> initData() {
+    private void initData() {
         itemList=new ArrayList<>();
-        ParseQuery<ParseObject> parseQuery=new ParseQuery<ParseObject>("MyTweet");
-
+        final ParseQuery<ParseObject> parseQuery=new ParseQuery<ParseObject>("MyTweet");
+        parseQuery.orderByDescending("createdAt");
         parseQuery.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> objects, ParseException e) {
@@ -81,21 +84,18 @@ public class FragmentHome extends Fragment {
                     for(ParseObject object : objects){
                         String tweet = (String) object.get("tweet");
                         String user = (String) object.get("user");
+                        itemList.add(new ModelRI(R.drawable.user,user,tweet));
 
-                        itemList.add(new ModelRI(user,tweet));
                     }
+                    recyclerView.setAdapter(new ItemAdapter(itemList));
+
+                }
+                else {
+                    Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
-
-
-
-
-
-        return itemList;
-
     }
-
 
 }

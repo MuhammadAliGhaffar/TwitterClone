@@ -7,8 +7,8 @@ public class ModelRI {
     String username;
     String userStatus;
 
-    public ModelRI(String username, String userStatus) {
-        //this.userProfile = userProfile;
+    public ModelRI(int userProfile,String username, String userStatus) {
+        this.userProfile = userProfile;
         this.username = username;
         this.userStatus = userStatus;
     }
