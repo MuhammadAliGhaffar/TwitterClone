@@ -4,10 +4,11 @@ public class ModelRI {
     //Model Class for Row items like image usrname user tweet
 
     int userProfile;
-    String username,userStatus;
+    String username;
+    String userStatus;
 
-    public ModelRI(int userProfile, String username, String userStatus) {
-        this.userProfile = userProfile;
+    public ModelRI(String username, String userStatus) {
+        //this.userProfile = userProfile;
         this.username = username;
         this.userStatus = userStatus;
     }
